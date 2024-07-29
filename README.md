@@ -111,24 +111,24 @@ function returnLate(foo) {
 var ret;
 
 if ( foo ) {
-ret = "foo";
-} else {
-ret = "quux";
+  ret = "foo";
+  } else {
+  ret = "quux";
 }
 
-return ret;
+  return ret;
 }
 
 // 👍
 function returnEarly(foo) {
-if ( foo ) {
-return "foo";
-}
-
-return "quux";
+  if ( foo ) {
+  return "foo";
+  }
+  
+  return "quux";
 }
 ```
-7. Следует добавлять отступ перед `return`
+7.  Перед последним `return` всегда долженр быть отступ
 ``` Javascript
 // 👎
 function someFucntion() { 
@@ -192,7 +192,7 @@ throw 'error'
 // 👍
 throw new Error('error')
 ```
-13. Не использовать тернарный опетор при наличии простой альтернативы
+13. Не использовать тернарный опетор при наличии более простой альтернативы
 ``` Javascript
 // 👎
 let score = val ? val : 0
@@ -200,7 +200,7 @@ let score = val ? val : 0
 // 👍
 let score = val || 0
 ```
-14. Документация `JSDoc` строго на английском языке. Это связано с тем, что английский более строгий язык 
+14. Документация `JSDoc` строго на английском языке. Это связано с тем, что английский более строгий язык и допускает меньше двойных трактований
 ``` Javascript
 // 👎
 /**
@@ -292,29 +292,7 @@ function add(x, y) {
 
 
 ## TypeScript
-1. Используя `JSDoc` не следует типизировать код, если он уже типизирован с помощью `TypeScript`
-``` javascript
-// 👎
-/**
- * Returns sum of two numbers
- * @param {number} x
- * @param {number} y
- * @returns {number}
- */
-function add(x: number, y: number): number {
-  return x + y;
-}
-
-// 👍
-/**
- * Returns sum of two numbers
- */
-function add(x: number, y: number): number {
-  return x + y;
-}
-
-```
-2. `Type` следует использовать только для простых типов, во всех остальных случаях следует использовать `interface`
+1. `Type` следует использовать только для простых типов, во всех остальных случаях следует использовать `interface`
 ```javascript
 // 👎
 interface SimpleType {
@@ -337,8 +315,31 @@ interface ComplexObject {
   name: string;
   data: any[];
 }
+```
+
+2. Используя `typescript` не следует типизировать код с помощью `JSDoc`
+``` javascript
+// 👎
+/**
+ * Returns sum of two numbers
+ * @param {number} x
+ * @param {number} y
+ * @returns {number}
+ */
+function add(x: number, y: number): number {
+  return x + y;
+}
+
+// 👍
+/**
+ * Returns sum of two numbers
+ */
+function add(x: number, y: number): number {
+  return x + y;
+}
 
 ```
+
 
 ## Vue
 1. Название компонентов
@@ -501,3 +502,5 @@ button {
 }
 </style>
 ```
+6. При использовании `Composition API` следует разбивать код по секциям
+![img.png](images/codeGroppingCompositionAPI.png)
