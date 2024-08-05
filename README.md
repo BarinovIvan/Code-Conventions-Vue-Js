@@ -1,8 +1,6 @@
 # Code Conventions Vue Js
 Приведенные ниже правила нужны для соблюдения консистентности кода. Соблюдение этих правил приветствуется.
 
-
-
 ## Общие
 1. Все папки должны быть названы в `camelCase`
 ```
@@ -11,12 +9,14 @@ components/
 |- main-header ...
 |- LeadComponent ...
 |- projects_section ...
+// Это директории
 
 👍
 components/
 |- mainHeader ...
 |- leadComponent ...
 |- projectsSection ...
+// Это директории
 ```
 2. Изображения
 * Все изображения должны быть описательными и в `kebab-case`.
@@ -558,3 +558,48 @@ button {
 ```
 6. При использовании `Composition API` следует разбивать код по секциям
 ![img.png](images/codeGroppingCompositionAPI.png)
+7. БЭМ.
+* В качестве блока родителя в названии класса элемента следует использовать название класса родителя. Если такой вариант не выглядит хорошо — следует разбить компонент на подкомпоненты
+* Переход от компонента родителя в названии блока класса к компоненту ребенка показан в примере `class="items__item item"`
+``` Vue
+// 👍
+<template>
+  <section class="items">
+    <h2 class="items__title" />
+
+    <div class="items__list">
+    // item можно вынести в отдельный компонент
+      <div
+        v-for="(item, index) in items"
+        :key="index"
+        class="items__item item"
+      >
+        <p class="item__text" />
+      </div>
+    </div>
+  
+    <div class="items__footer>
+      <div class="items__copyright" />
+      <img class="items__footer-image />
+    </div>
+  </section>
+</template>
+```
+8. В названии класса не должно быть типа
+``` Vue
+// 👎
+<div class="items-list">
+  <div class="items-list__item item">
+  <div class="items-list__item item">
+  <div class="items-list__item item">
+  <div class="items-list__item item">
+</div>
+
+// 👍
+<div class="items">
+  <div class="items__item item">
+  <div class="items__item item">
+  <div class="items__item item">
+  <div class="items__item item">
+</div>
+```
