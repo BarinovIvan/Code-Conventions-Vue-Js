@@ -346,29 +346,21 @@ function add(x, y) {
 
 
 ## TypeScript
-1. `Type` следует использовать только для простых типов, во всех остальных случаях следует использовать `interface`
+1. Для типизации объектов следует использовать `Type`
 ```javascript
 // 👎
-interface SimpleType {
-  value: number | string;
-}
-
-// 👍
-type SimpleType = number | string;
-
-// 👎
-type ComplexObject = {
-  id: number;
-  name: string;
-  data: any[];
-};
-
-// 👍
 interface ComplexObject {
   id: number;
   name: string;
   data: any[];
 }
+
+// 👍
+type ComplexObject = {
+  id: number;
+  name: string;
+  data: any[];
+};
 ```
 
 2. Используя `typescript` не следует типизировать код с помощью `JSDoc`
